@@ -19,7 +19,7 @@ export class ApiService {
   }
 
   getUserViaID(id: number){
-    return this.httpClient.get(this.API_URL + 'api/User/' + id + '?providerEmail=' + this.PROVIDER_EMAIL);
+    return this.httpClient.get(this.API_URL + '/api/User/' + id + '?providerEmail=' + this.PROVIDER_EMAIL);
   }
 
   //Appointment API Calls
@@ -28,19 +28,19 @@ export class ApiService {
   }
 
   getAppointmentViaID(id: number){
-    return this.httpClient.get(this.API_URL + 'api/Appointment/' + id + '?providerEmail=' + this.PROVIDER_EMAIL);
+    return this.httpClient.get(this.API_URL + '/api/Appointment/' + id + '?providerEmail=' + this.PROVIDER_EMAIL);
   }
 
   createAppointment(appointment: Appointment){
-    return this.httpClient.post(this.API_URL + 'api/Appointment?providerEmail=' + this.PROVIDER_EMAIL, appointment);
+    return this.httpClient.post(this.API_URL + '/api/Appointment?providerEmail=' + this.PROVIDER_EMAIL, appointment);
   }
 
   updateAppointment(appointment: Appointment){
-    return this.httpClient.put(this.API_URL + 'api/Appointment/' + appointment.id + '?providerEmail=' + this.PROVIDER_EMAIL, appointment);
+    return this.httpClient.put(this.API_URL + '/api/Appointment/' + appointment.id + '?providerEmail=' + this.PROVIDER_EMAIL, appointment);
   }
 
   deleteAppointment(appointment: Appointment){
-    return this.httpClient.delete(this.API_URL + 'api/Appointment/' + appointment.id + '?providerEmail=' + this.PROVIDER_EMAIL)
+    return this.httpClient.delete(this.API_URL + '/api/Appointment/' + appointment.id + '?providerEmail=' + this.PROVIDER_EMAIL)
   }
 
 

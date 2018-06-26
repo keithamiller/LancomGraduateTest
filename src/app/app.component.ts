@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from './shared/services/api.service';
+import { User} from './shared/models/user.model';
+import { Appointment } from './shared/models/appointment.model';
 
 
 @Component({
@@ -12,15 +14,24 @@ export class AppComponent {
   
   constructor(private apiService: ApiService) {}
   ngOnInit() {
-    this.apiService.getAllUsers().subscribe((data: Array<object>) => {
+    //Test Code
+    let userList: User[];
+    this.apiService.getAllUsers().subscribe((data: Array<User>) => {
+      userList = data;
+      console.log(userList[2]);
+    })
+
+    this.apiService.getAllAppointments().subscribe((data: Array<Appointment>) => {
+      console.log(data);
+      
+      
+    })
+
+    this.apiService.getAppointmentViaID(1025).subscribe((data: Appointment) => {
       console.log(data);
     })
 
-    this.apiService.getAllAppointments().subscribe((data: Array<object>) => {
-      console.log(data);
-    })
-
-    this.apiService.getAppointmentViaID(1025).subscribe((data: object) => {
+    this.apiService.getUserViaID(482).subscribe((data: User) => {
       console.log(data);
     })
   }
