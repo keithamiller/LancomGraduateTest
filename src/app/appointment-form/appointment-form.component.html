@@ -1,45 +1,57 @@
 <div class="container">
-  <h1>Appointment Creation Form</h1>
-  <form>
+  <h2>Appointment Creation Form</h2>
+  <form (ngSubmit) = "onSubmit()" #appointmentForm = "ngForm">
     <div class="form-group">
-      <label for="description">Description</label>
-      <input type="text" class="form-control" id="description" required>
+      <label for="description">Description*</label>
+      <input type="text" class="form-control" id="description"
+        required
+        [(ngModel)]="model.description" name = "description"
+        #description = "ngModel">
     </div>
 
     <div class="form-group">
-        <label for="start">Start Date</label>
-        <input type="datetime-local" class="form-control" id="start" required>
+        <label for="start">Start Date*</label>
+        <input type="datetime-local" class="form-control" id="start"
+          required
+          [(ngModel)]="model.start" name = "start"
+          #start = "ngModel">
     </div>
     
     <div class="form-group">
-        <label for="end">End Date</label>
-        <input type="datetime-local" class="form-control" id="end" required>
+        <label for="end">End Date*</label>
+        <input type="datetime-local" class="form-control" id="end" 
+          required
+          [(ngModel)]="model.end" name = "end"
+          #end = "ngModel">
     </div>
 
     <div class="form-group">
-        <label for="users">Users Involved</label>
-        <select multiple class="form-control" id="users" required>
+        <label for="party">Users Involved</label>
+        <select multiple class="form-control" id="party" 
+          required
+          [(ngModel)]="model.party" name = "party"
+          #party="ngModel">
+          <option *ngFor="let user of userList" [value] = "user.Id">{{user.Id}} - {{user.Name}} </option>
         </select>
     </div>
 
     <div class="form-group">
         <label for="notes">Notes</label>
-        <input type="text" class="form-control" id="notes" >
+        <input type="text" class="form-control" id="notes" 
+         [(ngModel)]="model.notes" name = "notes"
+         #notes = "ngModel">
     </div>
 
     <div class="form-group">
-      <label for="id">Id</label>
-      <input type="number" class="form-control" id="id" required>
+      <label for="id">Id*</label>
+      <input type="number" class="form-control" id="id" 
+        [(ngModel)]="model.id" name = "id"
+        #id = "ngModel">
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
-
-
-
-
-      
-
-      
+    <button type="submit" class="btn btn-success" 
+    [disabled]="!appointmentForm.form.valid">Submit</button>
+    <div ng-if="!appointmentForm.form.valid">*Please Complete all Required Fields</div>
   </form>
 </div>
 

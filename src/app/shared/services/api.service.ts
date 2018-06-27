@@ -36,11 +36,11 @@ export class ApiService {
   }
 
   updateAppointment(appointment: Appointment){
-    return this.httpClient.put(this.API_URL + '/api/Appointment/' + appointment.id + '?providerEmail=' + this.PROVIDER_EMAIL, appointment);
+    return this.httpClient.put(this.API_URL + '/api/Appointment/' + appointment.Id + '?providerEmail=' + this.PROVIDER_EMAIL, appointment);
   }
 
-  deleteAppointment(appointment: Appointment){
-    return this.httpClient.delete(this.API_URL + '/api/Appointment/' + appointment.id + '?providerEmail=' + this.PROVIDER_EMAIL)
+  deleteAppointment(id: number){
+    return this.httpClient.delete(this.API_URL + '/api/Appointment/' + id + '?providerEmail=' + this.PROVIDER_EMAIL)
   }
 
 

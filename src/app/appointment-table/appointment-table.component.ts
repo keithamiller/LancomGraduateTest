@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Appointment } from '../shared/models/appointment.model';
 import { ApiService } from '../shared/services/api.service';
+import { Router, ActivatedRoute} from '@angular/router'
 
 @Component({
   selector: 'app-appointment-table',
@@ -9,15 +10,22 @@ import { ApiService } from '../shared/services/api.service';
 })
 export class AppointmentTableComponent implements OnInit {
   appointments: Array<Appointment> = [];
+  clickedAppointment = new Appointment();
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.apiService.getAllAppointments().subscribe((data: Appointment[]) =>{
       this.appointments = data;
-      console.log(data);
-      console.log(this.appointments);
     })
+  }
+
+  rowClicked(event){
+    console.log(event);
+    console.log(event.data);
+    let selection : Appointment = event.data as Appointment;
+
+    this.router.navigate(['appointment-details-form', selection.Id]);
   }
 
   settings = {

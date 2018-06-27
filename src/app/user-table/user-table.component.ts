@@ -25,6 +25,10 @@ export class UserTableComponent implements OnInit {
     })
   }
 
+  rowClicked(data){
+    console.log(data);
+  }
+
   settings = {
     columns: {
       Name: {

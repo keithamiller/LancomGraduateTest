@@ -1,0 +1,56 @@
+<div *ngIf="dataReady == true">
+  <div class="container">
+      <h2>Appointment Editting</h2>
+      <form (ngSubmit) = "onSubmit()" #appointmentForm = "ngForm">
+        <div class="form-group">
+          <label for="description">Description*</label>
+          <input type="text" class="form-control" id="description"
+            required
+            [(ngModel)]="model.Description" name = "description"
+            #description = "ngModel">
+        </div>
+    
+        <div class="form-group">
+            <label for="start">Start Date*</label>
+            <input type="datetime-local" class="form-control" id="start"
+              required
+              [(ngModel)]="model.Start" name = "start"
+              #start = "ngModel">
+        </div>
+        
+        <div class="form-group">
+            <label for="end">End Date*</label>
+            <input type="datetime-local" class="form-control" id="end" 
+              required
+              [(ngModel)]="model.End" name = "end"
+              #end = "ngModel">
+        </div>
+    
+        <div class="form-group">
+            <label for="party">Users Involved</label>
+            <select multiple class="form-control" id="party" 
+              required
+              [(ngModel)]="model.Party" name = "party"
+              #party="ngModel">
+              <option *ngFor="let user of userList" [value] = "user.Id">{{user.Id}} - {{user.Name}} </option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="notes">Notes</label>
+            <input type="text" class="form-control" id="notes" 
+            [(ngModel)]="model.Notes" name = "notes"
+            #notes = "ngModel">
+        </div>
+    
+        <button type="submit" class="btn btn-success" 
+        [disabled]="!appointmentForm.form.valid">Save Edit</button>
+        <div ng-if="!appointmentForm.form.valid">*Please Complete all Required Fields</div>
+
+        <button (click)="deleteAppointment()">Delete Appointment</button>
+
+      </form>
+    </div>
+  </div>
+    
+    

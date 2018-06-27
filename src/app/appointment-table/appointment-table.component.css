@@ -35,3 +35,7 @@
 .information-text {
     text-align: right;
 }
+
+p {
+    font-style: italic
+}

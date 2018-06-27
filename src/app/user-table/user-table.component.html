@@ -1,4 +1,8 @@
 <ng2-smart-table
   [settings]="settings"
-  [source]="users">
+  [source]="users"
+  (userRowSelect) = "rowClicked($event)">
 </ng2-smart-table>
+
+
+<p>*Click row to see user details</p>

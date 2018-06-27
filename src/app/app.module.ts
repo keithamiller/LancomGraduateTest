@@ -11,6 +11,7 @@ import { AppointmentTableComponent } from './appointment-table/appointment-table
 import { routingModule} from './app.routing';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component'
 import { FormsModule } from '@angular/forms';
+import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
 
 
 
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     UserTableComponent,
     AppointmentTableComponent,
-    AppointmentFormComponent
+    AppointmentFormComponent,
+    AppointmentDetailsComponent
     
   ],
   imports: [

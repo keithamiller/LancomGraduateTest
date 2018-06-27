@@ -1,6 +1,7 @@
 <ng2-smart-table
   [settings]="settings"
-  [source]="appointments">
+  [source]="appointments"
+  (userRowSelect) = "rowClicked($event)">
 </ng2-smart-table>
 
 
@@ -8,7 +9,7 @@
     <nav>
         <a routerLink="/appointment-create-form">Create New Appointment</a>
         <div class = "information-text">
-          <p>*Click row to see/edit details</p>
+          <p>*Click row to see/edit/delete appointment details</p>
         </div>
       </nav>
 </div>

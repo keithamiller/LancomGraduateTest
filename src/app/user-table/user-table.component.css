@@ -26,3 +26,7 @@
 :host /deep/ ng2-smart-table {
     font-size:18px;
 }
+
+p{
+    font-style: italic
+}
