@@ -7,6 +7,7 @@ import { AppointmentDetailsComponent } from "./appointment-details/appointment-d
 
 const routes: Routes = [{path: 'user-table', component: UserTableComponent},
                         {path: 'appointment-table', component: AppointmentTableComponent},
+                        {path: 'appointment-table/:id', component: AppointmentTableComponent},
                         {path: 'appointment-create-form', component: AppointmentFormComponent},
                         {path: 'appointment-details-form/:id', component: AppointmentDetailsComponent},
                         {path: '', redirectTo: '/appointment-table', pathMatch: 'full'}

@@ -26,7 +26,7 @@ import { AppointmentDetailsComponent } from './appointment-details/appointment-d
     UserTableComponent,
     AppointmentTableComponent,
     AppointmentFormComponent,
-    AppointmentDetailsComponent
+    AppointmentDetailsComponent,
     
   ],
   imports: [

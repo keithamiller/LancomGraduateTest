@@ -1,3 +1,11 @@
+<div *ngIf="appointmentsForUser">
+  <h2>Appointments For User ID: {{id}}</h2>
+</div>
+
+<div *ngIf="appointmentsForUser === false">
+  <h2>All Appointments</h2>
+</div>
+
 <ng2-smart-table
   [settings]="settings"
   [source]="appointments"

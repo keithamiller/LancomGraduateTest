@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Appointment } from '../shared/models/appointment.model';
 import { ApiService } from '../shared/services/api.service';
 import { Router, ActivatedRoute} from '@angular/router'
+import { INTERNAL_BROWSER_PLATFORM_PROVIDERS } from '@angular/platform-browser/src/browser';
 
 @Component({
   selector: 'app-appointment-table',
@@ -11,13 +12,25 @@ import { Router, ActivatedRoute} from '@angular/router'
 export class AppointmentTableComponent implements OnInit {
   appointments: Array<Appointment> = [];
   clickedAppointment = new Appointment();
+  appointmentsForUser = false;
+  id: number;
 
-  constructor(private apiService: ApiService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private apiService: ApiService, private router: Router, private route: ActivatedRoute) { 
+
+  }
 
   ngOnInit() {
+    this.id = +this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
     this.apiService.getAllAppointments().subscribe((data: Appointment[]) =>{
       this.appointments = data;
+      if(this.id){
+        this.appointmentsForUser = true;
+        this.appointments = this.appointments.filter(appointment => appointment.Party.includes(this.id));
+      }
+      console.log(this.appointments);
     })
+    
   }
 
   rowClicked(event){

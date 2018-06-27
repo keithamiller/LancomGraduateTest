@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, Injectable } from '@angular/core';
 import { ApiService } from '../shared/services/api.service';
 import { User } from '../shared/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-table',
@@ -13,7 +14,7 @@ export class UserTableComponent implements OnInit {
 
   public users: Array<User> = [];
   dataReady = false;
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   
 
@@ -25,8 +26,12 @@ export class UserTableComponent implements OnInit {
     })
   }
 
-  rowClicked(data){
-    console.log(data);
+  rowClicked(event){
+    console.log(event);
+    let selection : User = event.data as User;
+
+    this.router.navigate(['appointment-table', selection.Id]);
+
   }
 
   settings = {
