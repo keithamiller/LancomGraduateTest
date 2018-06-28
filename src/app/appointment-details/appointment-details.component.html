@@ -30,7 +30,7 @@
             <label for="party">Users Involved</label>
             <select multiple class="form-control" id="party" 
               required
-              [(ngModel)]="model.Party" name = "party"
+              [(ngModel)]="model.Party[0]" name = "party"
               #party="ngModel">
               <option *ngFor="let user of userList" [value] = "user.Id">{{user.Id}} - {{user.Name}} </option>
             </select>

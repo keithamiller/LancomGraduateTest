@@ -42,6 +42,7 @@ export class AppointmentDetailsComponent implements OnInit {
   editAppointment() {
     this.apiService.updateAppointment(this.model).subscribe((res: Response) => {
       console.log(res);
+      this.router.navigate(['appointment-table']);
     })
 
   }

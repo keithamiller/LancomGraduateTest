@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Appointment } from '../shared/models/appointment.model';
 import { User } from '../shared/models/user.model';
 import { ApiService } from '../shared/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-appointment-form',
@@ -12,15 +13,16 @@ export class AppointmentFormComponent implements OnInit {
   userList: Array<User> = [];
   model = new Appointment();
   
-
+  constructor(private apiService: ApiService, private router: Router) { }
 
   onSubmit() {
     console.log("Submit Button Clicked");
     console.log(this.model);
     this.createNewAppointment();
+    this.router.navigate(['appointment-table']);
   }
 
-  constructor(private apiService: ApiService) { }
+  
 
   ngOnInit() {
     this.apiService.getAllUsers().subscribe((data: User[]) => {
@@ -32,6 +34,7 @@ export class AppointmentFormComponent implements OnInit {
 
   createNewAppointment() {
     //Do some validation stuff if needed.
+    
     this.apiService.createAppointment(this.model).subscribe((res: Response) => {
       console.log(res);
     })
